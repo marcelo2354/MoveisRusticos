@@ -2,12 +2,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const routers = require('./src/routers/router');
+const routers = require('./src/routers/router.js');
 const port = 3030;
 
 const app = express();
 app.use(cors());
 app.use(morgan('dev'));
+
 
 app.use(routers);
 

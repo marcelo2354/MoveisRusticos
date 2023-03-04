@@ -16,7 +16,6 @@ const isConnected = () => {
 	return !!client && !!client.topology && client.topology.isConnected();
 };
 
-
 async function findByFilter(collectionName, filter) {
 	if (!isConnected()) {
 		await connect();
@@ -31,9 +30,24 @@ async function insertOne(collectionName, data) {
 	return db.collection(collectionName).insertOne(data);
 }
 
+async function updateOne(collectionName, filter, data) {
+	if (!isConnected()) {
+		await connect();
+	}
+	return db.collection(collectionName).updateOne( filter , data);
+}
+
+async function deleteOne(collectionName, filter) {
+	if (!isConnected()) {
+		await connect();
+	}
+	return db.collection(collectionName).deleteOne(filter);
+}
 
 
 module.exports = {
 	findByFilter,
-	insertOne
+	insertOne,
+	updateOne,
+	deleteOne
 };
