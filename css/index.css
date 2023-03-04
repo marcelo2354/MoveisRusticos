@@ -98,26 +98,54 @@ height: 80vh;
   background-color: brown;
   grid-column: 1 / 3;
   grid-row: 1 / 2;
+  background-image: url("../img/baners/2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 #first-grid h2{
- margin: 200px 0 0 0;
-  
-  
-  
-
+ margin: 200px 0 0 10px;
+ color: #dadada;
+}
+#first-grid img{
+  float: right;
 }
 #second-grid{
+  background-image: url("../img/baners/2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-color: rgb(177, 159, 1);
   grid-row: 1 / 3;
   
 }
+
+#second-grid h2{
+  margin: 500px 0 0 10px;
+  color: #dadada;
+ }
 #third-grid{
   background-color: rgb(4, 167, 139);
-  
+  background-image: url("../img/baners/2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
+#third-grid h2{
+  margin: 200px 0 0 10px;
+  color: #dadada;
+ }
 #fourth-grid{
   background-color: rgb(116, 42, 165);
+  background-image: url("../img/baners/2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
+#fourth-grid h2{
+  margin: 200px 0 0 10px;
+  color: #dadada;
+ }
 
 #first-grid:hover{
   
@@ -180,3 +208,154 @@ height: 80vh;
 .card-price img{
   width: 40px;
 }
+/*//////////////////////////////////////////////////*/
+
+#section-shop{
+  padding: 50px;
+  margin-bottom: 300px;
+}
+
+.carousel-shop {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.carousel-container-shop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-container-shop img {
+  display: block;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+
+.carousel-prev{
+  padding:50px 15px 50px 15px;;
+}
+.carousel-next{
+  padding:50px 15px 50px 15px;;
+}
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 60%;
+  transform: translateY(40%);
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+  z-index: 1; /* adicionar z-index para sobrepor a camada de fundo */
+}
+
+.carousel-prev:before,
+.carousel-next:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  z-index: -1; /* adicionar z-index inferior para a camada de fundo */
+}
+
+.carousel-prev:hover:before,
+.carousel-next:hover:before {
+  opacity: 0.4; /* aumentar a opacidade para fazer o fade-in */
+}
+
+.carousel-prev {
+  left: 0;
+}
+
+.carousel-next {
+  right: 0;
+}
+/*//////////////////////////////////////////////////*/
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.faq {
+  margin-bottom: 10px;
+}
+
+.faq-title {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.faq-answer {
+  display: none;
+}
+
+.faq.open .faq-answer {
+  display: block;
+}
+
+.faq {
+  margin-bottom: 10px;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  transition: all 0.5s ease;
+  
+}
+
+.faq:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.16);
+}
+
+.faq-title {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 15px;
+  background-color: #eee;
+}
+
+.faq-answer {
+  padding: 15px;
+}
+
+.faq.open .faq-answer {
+  display: block;
+}
+
+/* Estilo para o ícone do título */
+.faq-title::before {
+  content: "\25B6";
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.faq.open .faq-title::before {
+  transform: rotate(90deg);
+}
+/*//////////////////////////////////////////////////*/
+
+
+
+
+
+
+
+
+
