@@ -23,6 +23,13 @@ async function findByFilter(collectionName, filter) {
 	return db.collection(collectionName).findOne(filter);
 }
 
+async function findAll(collectionName) {
+	if (!isConnected()) {
+		await connect();
+	}
+	return db.collection(collectionName).find({}).toArray();
+}
+
 async function insertOne(collectionName, data) {
 	if (!isConnected()) {
 		await connect();
@@ -47,6 +54,7 @@ async function deleteOne(collectionName, filter) {
 
 module.exports = {
 	findByFilter,
+	findAll,
 	insertOne,
 	updateOne,
 	deleteOne

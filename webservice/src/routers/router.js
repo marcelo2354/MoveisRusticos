@@ -1,28 +1,24 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
-const controller = require('../controller/loginController');
+const controllLogin = require('../controller/loginController');
+const controllProduts = require('../controller/productsController');
 const router = express();
 router.use(bodyParser.json());
 
-const collection = process.env.COLLETION_LOGIN
 
+router.get('/', (req, res)=> res.status(200).send({Messagem: 'Sistema Funcionando !!!'}));
 
-router.post('/createLogin', controller.createLogin);
+// Criar Login do ADM
+router.post('/createLogin',  controllLogin.createLogin);
+// Usar Email e Senha Criado para entrar
+router.post('/login', controllLogin.login);
+// Criar Inserção de Produtos
+router.post('/product', controllProduts.createProduto);
+// Retornar Todos os Produtos
+router.get('/product', controllProduts.getAllProduts);
 
-
-
-router.post('/login', (req, res)=>{
-    res.status(200).send({Messagem: 'Rota que fará login'})
-});
-
-router.post('/product', (req, res)=>{
-    res.status(200).send({Messagem: 'Rota que fará criação de dados no banco!'})
-});
-
-router.get('/product', (req, res)=>{
-    res.status(200).send({Messagem: 'Rota que pegará todos os dados no banco!'})
-});
-
+// Retornar um Produto Especifico 
+// Atualizar Um produto Especifico 
+// Deletar um Produto especifico
 
 module.exports = router;
