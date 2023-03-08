@@ -25,7 +25,7 @@ async function createProduto(req, res) {
 async function getAllProduts(req, res){
      try {
           const Allproducts = await models.getProducts();
-
+         
           res.status(200).send(Allproducts);
 
      } catch (error) {

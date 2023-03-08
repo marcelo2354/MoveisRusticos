@@ -174,26 +174,27 @@ height: 80vh;
   margin-bottom:1%;
 }
 
+/* Conteiner Principal onde estão os cards */
 .cards-grid{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
+/* Cada Card separado */
 .card {
   border: 1px solid white;
-  cursor: pointer;
   padding: 10px;
   margin: 15px;
-  margin-left: 105px;
+  margin-left: 10px;
   width: 300px;
   height: 400px;
 }
+/* Imaggem Principal do Card*/
 .card-img{
   width: 100%;
 }
 .card img {
-  cursor: pointer;
   max-width: 100%;
   max-height: 100%;
 }
@@ -208,6 +209,7 @@ height: 80vh;
 .card-price img{
   width: 40px;
 }
+
 /*//////////////////////////////////////////////////*/
 
 #section-shop{
