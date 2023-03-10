@@ -29,7 +29,7 @@
             <h5 class="card-title">Configuração <img src="https://i.ibb.co/0F8mzSR/configpng.png" width="25px"></h5>
             <p class="card-text">Atualizar email e senha do ADM.</p>
             <a href="#" class="btn btn-primary">Config</a>
-            <a href="#" class="btn btn-primary">Visualizar</a>
+            <a href="#" class="btn btn-primary"data-toggle="modal" data-target="#modal-one" >Visualizar</a>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <div class="card-body">
             <h5 class="card-title">Produtos<img src="https://i.ibb.co/Bj5T3Pp/mesinha-com.png" width="35px"></h5>
             <p class="card-text">Adicionar ou Atualizar Produtos do Site Principal.</p>
-            <a href="#" class="btn btn-primary">Adicionar</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-two">Adicionar</a>
             <a href="#" class="btn btn-primary">Visualizar Todos</a>
           </div>
         </div>
@@ -48,17 +48,107 @@
           <div class="card-body">
             <h5 class="card-title">Emails <img src="https://i.ibb.co/qRn6vg8/email.png" width="25px"></h5>
             <p class="card-text">Ver Todos os emails cadastrados no site Principal.</p>
-            <a href="#" class="btn btn-primary">Ver</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-tree" >Ver</a>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
 
+  
 
-<style>
-
-</style>
+  <!-- Modais -->
+  <div class="modal fade" id="modal-one" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="TituloModalCentralizado">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...1
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal-two" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="TituloModalCentralizado">Cadastrar Novo Produto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Adicione uma Imagem</label>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Adcione um Titulo (Não pode Ser igual a um existente!)</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titulo do Produto">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Breve Dscrição do Produto</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Promoção
+              </label>
+            </div>
+            <br/>
+            <div class="input-group mb-3">
+              <span class="input-group-text">$ Preço</span>
+              <input type="number" class="form-control" step="0.01" id="price-input">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary" onclick="pegaImagem()">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal-tree" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="TituloModalCentralizado">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...3
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const priceInput = document.getElementById('price-input');
+    priceInput.addEventListener('blur', () => {
+      const regex = /^\d+(\.\d{1,2})?$/; // regex para validar 1 ou 2 casas decimais
+      if (!regex.test(priceInput.value)) {
+        priceInput.setCustomValidity('Insira um valor válido com no máximo 2 casas decimais.');
+      } else {
+        priceInput.setCustomValidity('');
+      }
+    });
+    </script>
 </body>
 </html>

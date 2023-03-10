@@ -23,6 +23,15 @@ async function findByFilter(collectionName, filter) {
 	return db.collection(collectionName).findOne(filter);
 }
 
+async function findByFilterPartial(collectionName, filter) {
+	if (!isConnected()) {
+	  await connect();
+	}
+	const regexFilter = new RegExp(filter, 'i');
+	console.log(regexFilter);
+	return db.collection(collectionName).find({ title: { $regex: regexFilter } }).toArray();
+  }
+
 async function findAll(collectionName) {
 	if (!isConnected()) {
 		await connect();
@@ -54,6 +63,7 @@ async function deleteOne(collectionName, filter) {
 
 module.exports = {
 	findByFilter,
+	findByFilterPartial,
 	findAll,
 	insertOne,
 	updateOne,

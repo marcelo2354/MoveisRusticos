@@ -12,13 +12,16 @@ router.get('/', (req, res)=> res.status(200).send({Messagem: 'Sistema Funcionand
 router.post('/createLogin',  controllLogin.createLogin);
 // Usar Email e Senha Criado para entrar
 router.post('/login', controllLogin.login);
+
 // Criar Inserção de Produtos
 router.post('/product', controllProduts.createProduto);
 // Retornar Todos os Produtos
 router.get('/product', controllProduts.getAllProduts);
 
 // Retornar um Produto Especifico 
+router.get('/productSearch', controllProduts.getProdutsByname);
 // Atualizar Um produto Especifico 
+router.put('/product', controllProduts.updateProdut);
 // Deletar um Produto especifico
 
 module.exports = router;

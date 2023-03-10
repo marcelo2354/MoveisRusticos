@@ -34,5 +34,28 @@ async function getAllProduts(req, res){
      }
 }
 
+async function getProdutsByname(req, res){
+     try {
+          const search = req.body
+          const SearchProducts = await models.getProductsByName(search);
+          res.status(200).send(SearchProducts);
 
-module.exports = { createProduto, getAllProduts}
+     } catch (error) {
+          res.status(500).send(console.log(error));
+
+     }
+}
+async function updateProdut(req, res){
+     try {
+          const newData = req.body
+          
+          res.status(200).send();
+
+     } catch (error) {
+          res.status(500).send(console.log(error));
+
+     }
+}
+
+
+module.exports = { createProduto, getAllProduts, getProdutsByname, updateProdut }

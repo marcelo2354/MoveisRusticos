@@ -19,7 +19,15 @@ async function create(newData){
      return getAll;
 }
 
+ async function getProductsByName(search) {
+    const filter = search.title;
+     const getAll = await repo.findByFilterPartial(collection, filter);
+
+     return getAll;
+}
 
 
 
-module.exports = { create, getProducts}
+
+
+module.exports = { create, getProducts, getProductsByName}
