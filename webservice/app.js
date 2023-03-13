@@ -5,18 +5,23 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const routers = require('./src/routes.js');
+const mongoose = require('mongoose');
+const routes = require('./src/routes.js');
 
 /* CONFIG */
 const app = express();
-const port = 3030;
+const port = process.env.PORT || 3030;
+const dbConnString = process.env.DB_CONNECTION_STRING;
 
 /* MIDDLEWARE */
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/', routers);
+app.use('/', routes);
 
-/* RUN SERVER */
-app.listen(port, () => {
-	console.log(`Running application on port:  http://localhost:${port}`);
+/* RUN DATABASE AND SERVER */
+mongoose.connect(dbConnString).then(() => {
+    console.log(`Connected to ${dbConnString} successfully...`);
+    app.listen(port, () => {
+        console.log(`Running application on port:  http://localhost:${port}`);
+    });
 });

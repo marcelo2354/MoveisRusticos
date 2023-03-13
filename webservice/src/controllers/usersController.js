@@ -1,12 +1,21 @@
-async function createUser(req, res) {
-    try {
-         const data = req.body;
-         const createNewLogin = await models.create(data);
+const User = require('../models/user')
+const _ = require('lodash');
 
-         res.status(200).send(createNewLogin);
+/* Create User */
+const createUser = {}
+createUser.api = async (req, res) => {
+    const { error } = User.validate(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-    } catch (error) {
-         res.status(500).send(console.log(error));
+    if (await User.findOne({ email: req.body.email }))
+        return res.status(400).send('Um usuário com esse e-mail já existe.');
+    
+        const user = new User(_.pick(req.body, ['email', 'password']));
+    await user.save();
 
-    }
-};
+    res.status(201).send(user);
+}
+
+module.exports = {
+    createUser,
+}
