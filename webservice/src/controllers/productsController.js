@@ -1,6 +1,5 @@
 const models = require('../models/product');
 
-
 async function createProduto(req, res) {
     try {
         const {image, title, description, price=[{value, incon}]} = req.body;

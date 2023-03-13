@@ -1,20 +1,24 @@
 {
   "name": "webservice",
   "version": "1.0.0",
-  "description": "Api de dados da loja Moveis Rusticos Mogi",
+  "description": "API de dados da loja Moveis Rusticos Mogi",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Lucas, Marcelo, Julho",
+  "author": "Lucas, Marcelo, Júlio",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "joi": "^17.8.3",
+    "lodash": "^4.17.21",
     "mongoose": "^7.0.0",
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.21"
   }
 }
