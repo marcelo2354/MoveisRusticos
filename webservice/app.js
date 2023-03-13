@@ -11,7 +11,7 @@ const port = 3030;
 /* MIDDLEWARE */
 app.use(cors());
 app.use(morgan('dev'));
-app.use(routers);
+app.use('/', routers);
 
 /* RUN SERVER */
 app.listen(port, () => {
