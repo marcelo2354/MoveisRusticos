@@ -32,9 +32,8 @@
 			var price1 = document.createElement("h3");
 			var price2 = document.createElement("img");
             var divNova = document.createElement("div");
-			price1.textContent = product.price[0].value;
-			price2.src = product.price[0].incon;
-		
+			price1.textContent = product.price;
+			price2.src = 'https://i.ibb.co/R3S3n3L/Carr-compras-icon.png';
             divNova.appendChild(price1);
             divNova.appendChild(price2);
             divNova.className = "card-price";

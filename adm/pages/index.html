@@ -39,6 +39,7 @@
             <h5 class="card-title">Produtos<img src="https://i.ibb.co/Bj5T3Pp/mesinha-com.png" width="35px"></h5>
             <p class="card-text">Adicionar ou Atualizar Produtos do Site Principal.</p>
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-two">Adicionar</a>
+            <a href="#" class="btn btn-primary">Mais Populares</a>
             <a href="#" class="btn btn-primary">Visualizar Todos</a>
           </div>
         </div>
@@ -54,8 +55,6 @@
       </div>
     </div>
   </div>
-
-  
 
   <!-- Modais -->
   <div class="modal fade" id="modal-one" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
@@ -106,16 +105,22 @@
                 Promoção
               </label>
             </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+              <label class="form-check-label" for="defaultCheck2">
+                Mais Populares (Limite de 6 Unidades)
+              </label>
+            </div>
             <br/>
             <div class="input-group mb-3">
               <span class="input-group-text">$ Preço</span>
-              <input type="number" class="form-control" step="0.01" id="price-input">
+              <input type="text" class="form-control" step="0.01" id="price-input" required pattern="^\d{1,3}(,\d{3})*(\.\d{2})?$">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-primary" onclick="pegaImagem()">Salvar mudanças</button>
+          <button type="submit" class="btn btn-primary" onclick="checklogs()" id="submit-button">Salvar mudanças</button>
         </div>
       </div>
     </div>
@@ -139,16 +144,9 @@
       </div>
     </div>
   </div>
-  <script>
-    const priceInput = document.getElementById('price-input');
-    priceInput.addEventListener('blur', () => {
-      const regex = /^\d+(\.\d{1,2})?$/; // regex para validar 1 ou 2 casas decimais
-      if (!regex.test(priceInput.value)) {
-        priceInput.setCustomValidity('Insira um valor válido com no máximo 2 casas decimais.');
-      } else {
-        priceInput.setCustomValidity('');
-      }
-    });
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../js/index.js"></script>
+
 </body>
 </html>

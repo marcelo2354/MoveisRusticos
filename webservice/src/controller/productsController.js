@@ -3,12 +3,12 @@ const models = require('../models/product');
 
 async function createProduto(req, res) {
     try {
-        const {image, title, description, price=[{value, incon}]} = req.body;
+        const {image, title, description, price} = req.body;
 
-        if(!image || !title || !description || !price[0].value || !price[0].incon){
+        if(!image || !title || !description || !price){
             res.status(401).send({Menssagem: 'Ainda Faltam Campos a serem preenchidos!!'})
         }
-        if(!image && !title && !description && !price[0].value && !price[0].incon){
+        if(!image && !title && !description && !price){
             res.status(401).send({Menssagem: 'Ainda Faltam Campos a serem preenchidos!!'})
         }
           
