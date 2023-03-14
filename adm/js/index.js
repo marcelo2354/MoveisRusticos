@@ -19,8 +19,8 @@ async function checklogs() {
       const imageData = reader.result;
       axios.post('http://localhost:3030/product', { image: imageData, title, description, price, check1, check2 })
         .then(response => {
-          console.log(response.data);
-          // redireciona para a página do painel
+          console.log(response);
+          alert(response)
         })
         .catch(error => {
           console.error(error.response.data);

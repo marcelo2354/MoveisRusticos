@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-nav">
+      <a href="#wrapper"><img src="../img/logo/logo.webp" width="30px" height="30px"></a>
+    </div>
+
+    <nav>
+      <ul class="options">
+        <li><a href="../index.html">Principal</a></li>
+        <li><a href="#">CHARACTERS</a></li>
+        <li><a href="#">HISTORY</a></li>
+        <li><a href="#">ORDER NOW</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="tela-galery">
+    <h1>Pequise pelo seu produto desejado</h1>
+    <div class="galery">
+
+    </div>
+
+  </section>
+
+  <footer>
+    <div id="section-footer">
+      <div class="footer-container">
+        <div id="footer-logo"><img src="#" width="60px" height="60px"></div>
+        <div id="footer-content">
+          <ul>
+            <li>
+              <h1>Titulo</h1>
+            </li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+          </ul>
+        </div>
+        <div id="footer-social">
+          <ul>
+            <li><img src="#" width="50px" height="50px"></li>
+            <li><img src="#" width="50px" height="50px"></li>
+            <li><img src="#" width="50px" height="50px"></li>
+          </ul>
+        </div>
+      </div>
+      <div id="Copywrite">
+        <p>Copyright © 2023. Todos os direitos reservados cnpj: 14565654/6547.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cards Do Banco de dados -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function galery() {
+      // Seleciona o contêiner de cards
+      var cardsContainer = document.querySelector(".galery");
+
+      var response = await axios.get("http://localhost:3030/product")
+      response.data.forEach(product => {
+        // Cria um novo elemento de card
+        var card = document.createElement("div");
+        card.className = "card";
+
+        console.log(product.image);
+        // Adiciona o imagem do card
+        var image = document.createElement("img");
+        image.className = "card-img";
+        image.src = product.image;
+        card.appendChild(image);
+
+        // Adiciona a titulo do card
+        var titulo = document.createElement("h2");
+        titulo.textContent = product.title;
+        card.appendChild(titulo);
+
+        // Adiciona a descrição do card
+        var descricao = document.createElement("p");
+        descricao.textContent = product.description;
+        card.appendChild(descricao);
+
+        // Adiciona a descrição do card
+        var price1 = document.createElement("h3");
+        var price2 = document.createElement("img");
+        var divNova = document.createElement("div");
+        price1.textContent = product.price;
+        price2.src = 'https://i.ibb.co/R3S3n3L/Carr-compras-icon.png';
+        divNova.appendChild(price1);
+        divNova.appendChild(price2);
+        divNova.className = "card-price";
+
+        card.appendChild(divNova);
+
+        // Adiciona o card ao contêiner de cards
+        cardsContainer.appendChild(card);
+
+      })
+    };
+
+    galery();
+  </script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>

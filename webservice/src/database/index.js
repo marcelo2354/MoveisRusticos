@@ -38,6 +38,12 @@ async function findAll(collectionName) {
 	}
 	return db.collection(collectionName).find({}).toArray();
 }
+async function find(collectionName, obj) {
+	if (!isConnected()) {
+		await connect();
+	}
+	return db.collection(collectionName).find({ check2: true }).toArray();
+}
 
 async function insertOne(collectionName, data) {
 	if (!isConnected()) {
@@ -65,6 +71,7 @@ module.exports = {
 	findByFilter,
 	findByFilterPartial,
 	findAll,
+	find,
 	insertOne,
 	updateOne,
 	deleteOne

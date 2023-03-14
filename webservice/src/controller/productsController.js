@@ -34,6 +34,19 @@ async function getAllProduts(req, res){
      }
 }
 
+
+async function getAllPopular(req, res){
+     try {
+          const search = req.body
+          const SearchProducts = await models.getProductsByPopular(search);
+          res.status(200).send(SearchProducts);
+
+     } catch (error) {
+          res.status(500).send(console.log(error));
+
+     }
+}
+
 async function getProdutsByname(req, res){
      try {
           const search = req.body
@@ -45,6 +58,7 @@ async function getProdutsByname(req, res){
 
      }
 }
+
 async function updateProdut(req, res){
      try {
           const newData = req.body
@@ -58,4 +72,4 @@ async function updateProdut(req, res){
 }
 
 
-module.exports = { createProduto, getAllProduts, getProdutsByname, updateProdut }
+module.exports = { createProduto, getAllProduts, getProdutsByname, getAllPopular, updateProdut }

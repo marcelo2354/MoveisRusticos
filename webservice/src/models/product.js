@@ -25,9 +25,14 @@ async function create(newData){
 
      return getAll;
 }
+ async function getProductsByPopular() {
+     const getAll = await repo.find(collection);
+
+     return getAll;
+}
 
 
 
 
 
-module.exports = { create, getProducts, getProductsByName}
+module.exports = { create, getProducts, getProductsByName, getProductsByPopular}

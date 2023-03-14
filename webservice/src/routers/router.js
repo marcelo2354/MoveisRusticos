@@ -18,6 +18,8 @@ router.post('/login', controllLogin.login);
 router.post('/product', controllProduts.createProduto);
 // Retornar Todos os Produtos
 router.get('/product', controllProduts.getAllProduts);
+// Retornar Os mais Populares
+router.get('/productPopular', controllProduts.getAllPopular);
 
 // Retornar um Produto Especifico 
 router.get('/productSearch', controllProduts.getProdutsByname);
