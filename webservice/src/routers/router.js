@@ -7,7 +7,7 @@ router.use(bodyParser.json({ limit: '10mb' }));
 router.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 
-router.get('/', (req, res)=> res.status(200).send({Messagem: 'Sistema Funcionando !!!'}));
+router.get('/', (req, res)=> res.status(200).send({Messagem: 'Sistema Funcionando!'}));
 
 // Criar Login do ADM
 router.post('/createLogin',  controllLogin.createLogin);
