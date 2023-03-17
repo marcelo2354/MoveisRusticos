@@ -1,19 +1,27 @@
-/* eslint-disable linebreak-style */
+/* DOTENV */
+require('dotenv').config();
+
+/* LIBRARIES */
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const routers = require('./src/routers/router.js');
-const port = 3030;
+const mongoose = require('mongoose');
+const routes = require('./src/routers/router');
 
+/* CONFIG */
 const app = express();
+const port = process.env.PORT || 3030;
+const dbConnString = process.env.MONGO_URI;
+
+/* MIDDLEWARE */
 app.use(cors());
 app.use(morgan('dev'));
+app.use('/', routes);
 
-
-app.use(routers);
-
-
-
-app.listen(port, () => {
-	console.log(`Running application on port:  http://localhost:${port}`);
+/* RUN DATABASE AND SERVER */
+mongoose.connect(dbConnString).then(() => {
+    console.log(`Connected to ${dbConnString} successfully...`);
+    app.listen(port, () => {
+        console.log(`Running application on port:  http://localhost:${port}`);
+    });
 });

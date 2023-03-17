@@ -1,6 +1,5 @@
 require('dotenv');
 const repo = require('../database/index');
-
 const collection = process.env.COLLECTION_PRODUTOS
 
 
@@ -25,6 +24,8 @@ async function create(newData){
 
      return getAll;
 }
+
+
  async function getProductsByPopular() {
      const getAll = await repo.find(collection);
 
@@ -32,7 +33,21 @@ async function create(newData){
 }
 
 
+async function getProdById(id) {
+	let result = await repo.findByFilter(collection, { id: id });
+	
+    return result;
+}
+
+// update from ID  63f4cfccde9791ad588c90ad
+async function updateById(id, newData) {
+
+    
+    await repo.updateOne(collection, { id: id }, { $set: { image: newData.image, title: newData.title, description: newData.description, price: newData.price, check: newData.check, check2: newData.check2} });
+
+	return newData;
+}
 
 
 
-module.exports = { create, getProducts, getProductsByName, getProductsByPopular}
+module.exports = { create, getProducts, getProductsByName, getProductsByPopular,getProdById, updateById}
