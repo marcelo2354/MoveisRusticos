@@ -15,7 +15,7 @@ async function createProduto(req, res) {
           createNewProduct.id = uuidv4();
         const data = await models.create(createNewProduct);
           delete createNewProduct._id
-          res.status(200).send(data);
+          res.status(200).send(createNewProduct);
 
      } catch (error) {
           res.status(500).send(console.log(error));

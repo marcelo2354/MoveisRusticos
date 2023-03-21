@@ -22,7 +22,7 @@ async function login() {
   const email = document.getElementById('email').value;
   const senha = document.getElementById('password').value;
 
-  axios.post('http://localhost:3030/login', { email, senha })
+  axios.post('http://localhost:3030/ADM', { email, senha })
     .then(response => {
        window.location.href = 'http://127.0.0.1:5500/frontend/adm/pages/index.html'; // redireciona para a página do painel
     })

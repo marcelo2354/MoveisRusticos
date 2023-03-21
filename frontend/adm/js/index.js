@@ -14,7 +14,7 @@ async function checklogs() {
   
     const reader = new FileReader();
     reader.readAsDataURL(imageInput.files[0]);
-    
+  
     reader.onload = function () {
       const imageData = reader.result;
       axios.post('http://localhost:3030/product', { image: imageData, title, description, price, check1, check2 })

@@ -8,8 +8,8 @@ const controllProduts = require('../controller/productsController');
 const router = express.Router();
 router.use(bodyParser.json());
 /*Aceitar imagens com links Grandes*/
-router.use(bodyParser.json({ limit: '10mb' }));
-router.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+router.use(bodyParser.json({ limit: '11mb' }));
+router.use(bodyParser.urlencoded({ limit: '11mb', extended: true }));
 
 
 router.get('/', (req, res)=> res.status(200).send({Messagem: 'Sistema Funcionando !!!'}));
