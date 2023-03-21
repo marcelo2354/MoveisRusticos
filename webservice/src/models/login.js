@@ -26,23 +26,33 @@ async function singIn(data) {
     }
 }
 
-
 async function getLogins() {
     const getAll = await repo.findAll(collection);
     getAll.forEach(function (item, indice, array) {
+        delete getAll[indice]._id;
         delete getAll[indice].senha;
       })
     return getAll;
 }
 
 async function updateById(reqId, reqBody) {
-
-    const newData = await repo.updateOne(collection, {_id: objectId(reqId)}, { $set:{email: reqBody.email, senha: reqBody.senha}});
-
+    const newData = await repo.updateOne(collection, {id: reqId}, { $set: reqBody});
     return newData
+}
+
+async function deletById(reqId, reqBody) {
+    const checkSenha = await repo.findByFilter(collection, { senha: reqBody.senha });
+    console.log(checkSenha);
+    if (!checkSenha) {
+        const msg = { Messagem: "Senha inválida!"};
+        return msg
+    } else {
+        const newData = await repo.deleteOne(collection, {id: reqId});
+        return newData
+    }
 }
 
 
 
 
-module.exports = { create, singIn, getLogins, updateById}
+module.exports = { create, singIn, getLogins, updateById, deletById }

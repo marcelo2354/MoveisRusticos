@@ -15,15 +15,15 @@ router.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 router.get('/', (req, res)=> res.status(200).send({Messagem: 'Sistema Funcionando !!!'}));
 
 // Criar Login do ADM
-router.post('/createLogin',  controllLogin.createLogin);
+router.post('/createADM',  controllLogin.createAdm);
 // Usar Email e Senha Criado para entrar
-router.post('/login', controllLogin.login);
+router.post('/ADM', controllLogin.loginAdm);
 // Atualizar Email e Senha
-router.get('/login', controllLogin.readAllLogin);
+router.get('/ADM', controllLogin.readAllADM);
 // Atualizar Email e Senha
-router.put('/login/:id', controllLogin.updateLogin);
+router.put('/ADM/:id', controllLogin.updateADM);
 // Deletar Email e Senha
-//router.delete('/login', controllLogin.updateLogin);
+router.delete('/ADM/:id', controllLogin.deleteADM);
 
 
 
@@ -38,5 +38,6 @@ router.get('/productSearch', controllProduts.getProdutsByname);
 // Atualizar Um produto Especifico 
 router.put('/product/:id', controllProduts.updateProdut);
 // Deletar um Produto especifico
+router.delete('/product/:id', controllProduts.deleteProdut);
 
 module.exports = router;

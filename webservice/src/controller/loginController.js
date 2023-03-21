@@ -1,10 +1,18 @@
 const models = require('../models/login');
+const { v4: uuidv4 } = require('uuid');
 
-async function createLogin(req, res) {
+async function createAdm(req, res) {
      try {
-          const data = req.body;
+          let {email, senha} = req.body;
+          if (!email || !senha ) {
+               res.status(401).send({ Menssagem: 'Ainda Faltam Campos a serem preenchidos!!' })
+          }
+          if (!email && !senha ) {
+               res.status(401).send({ Menssagem: 'Ainda Faltam Campos a serem preenchidos!!' })
+          }    
+          const data = req.body
+          data.id = uuidv4();
           const createNewLogin = await models.create(data);
-
           res.status(200).send(createNewLogin);
 
      } catch (error) {
@@ -13,7 +21,7 @@ async function createLogin(req, res) {
      }
 };
 
-async function login(req, res) {
+async function loginAdm(req, res) {
      try {
           const data = req.body;
           if (data.email == null && data.senha == null) {
@@ -34,30 +42,48 @@ async function login(req, res) {
 
      }
 }
-async function readAllLogin(req, res) {
+async function readAllADM(req, res) {
      try {
           const AllLogins = await models.getLogins();
-       
+
           res.status(200).send(AllLogins);
 
      } catch (error) {
           res.status(500).send(console.log(error));
 
      }
+
 }
-async function updateLogin(req, res) {
-     try {
-          const reqId = await req.params.id
-          const reqBody = await req.body
-          const newlogin = await models.updateById(reqId, reqBody);
-       
-          res.status(200).send(newlogin);
+async function updateADM(req, resp) {
+	const data = req.params.id;
+	const newDate = req.body;
+	try {
+		await models.updateById(data, newDate);
 
-     } catch (error) {
-          res.status(500).send(console.log(error));
+		resp.status(200).send({ mensagem: 'Usuário alterado com sucesso'});
 
-     }
+	} catch (error) {
+		resp.status(500).send({
+			error: 'Error',
+			message: error.message
+		});
+	}
+}
+async function deleteADM(req, res) {
+	const data = req.params.id;
+	const senha = req.body;
+	try {
+		const result  = await models.deletById(data, senha);
+
+		res.status(200).send(result);
+
+	} catch (error) {
+		res.status(500).send({
+			error: 'Error',
+			message: error.message
+		});
+	}
 }
 
 
-module.exports = { createLogin, login, readAllLogin, updateLogin }
+module.exports = { createAdm, loginAdm, readAllADM, updateADM, deleteADM }

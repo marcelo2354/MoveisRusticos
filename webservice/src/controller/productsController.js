@@ -13,8 +13,9 @@ async function createProduto(req, res) {
           }          
           const createNewProduct = req.body
           createNewProduct.id = uuidv4();
-          await models.create(createNewProduct);
-          res.status(200).send(createNewProduct);
+        const data = await models.create(createNewProduct);
+          delete createNewProduct._id
+          res.status(200).send(data);
 
      } catch (error) {
           res.status(500).send(console.log(error));
@@ -59,22 +60,36 @@ async function getProdutsByname(req, res) {
 }
 
 async function updateProdut(req, res) {
-     try {
+     const data = req.params.id;
+	const newDate = req.body;
+	try {
+		await models.updateById(data, newDate);
 
-          const idProdut = req.params.id;
-          const newProdut = req.body;
+		res.status(200).send({ mensagem: 'Usuário alterado com sucesso'});
 
-          await models.updateById(idProdut, newProdut);
+	} catch (error) {
+		res.status(500).send({
+			error: 'Error',
+			message: error.message
+		});
+	}
+}
 
-          res.status(200).send({ mensagem: 'Produto Alterado com Sucesso' });
+async function deleteProdut(req, res) {
+     const data = req.params.id;
+	const senha = req.body;
+	try {
+		const result  = await models.deletById(data, senha);
 
-     } catch (error) {
-          res.status(500).send({
-               error: 'Error',
-               message: error.message
-          });
-     }
+		res.status(200).send({message: "Produto Deletado !!"});
+
+	} catch (error) {
+		res.status(500).send({
+			error: 'Error',
+			message: error.message
+		});
+	}
 }
 
 
-module.exports = { createProduto, getAllProduts, getProdutsByname, getAllPopular, updateProdut }
+module.exports = { createProduto, getAllProduts, getProdutsByname, getAllPopular, updateProdut, deleteProdut }
