@@ -27,6 +27,22 @@ async function singIn(data) {
 }
 
 
+async function getLogins() {
+    const getAll = await repo.findAll(collection);
+    getAll.forEach(function (item, indice, array) {
+        delete getAll[indice].senha;
+      })
+    return getAll;
+}
+
+async function updateById(reqId, reqBody) {
+
+    const newData = await repo.updateOne(collection, {_id: objectId(reqId)}, { $set:{email: reqBody.email, senha: reqBody.senha}});
+
+    return newData
+}
 
 
-module.exports = { create, singIn}
+
+
+module.exports = { create, singIn, getLogins, updateById}

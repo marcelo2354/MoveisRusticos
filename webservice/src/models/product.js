@@ -42,7 +42,6 @@ async function getProdById(id) {
 // update from ID  63f4cfccde9791ad588c90ad
 async function updateById(id, newData) {
 
-    
     await repo.updateOne(collection, { id: id }, { $set: { image: newData.image, title: newData.title, description: newData.description, price: newData.price, check: newData.check, check2: newData.check2} });
 
 	return newData;

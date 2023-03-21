@@ -34,6 +34,30 @@ async function login(req, res) {
 
      }
 }
+async function readAllLogin(req, res) {
+     try {
+          const AllLogins = await models.getLogins();
+       
+          res.status(200).send(AllLogins);
+
+     } catch (error) {
+          res.status(500).send(console.log(error));
+
+     }
+}
+async function updateLogin(req, res) {
+     try {
+          const reqId = await req.params.id
+          const reqBody = await req.body
+          const newlogin = await models.updateById(reqId, reqBody);
+       
+          res.status(200).send(newlogin);
+
+     } catch (error) {
+          res.status(500).send(console.log(error));
+
+     }
+}
 
 
-module.exports = { createLogin, login }
+module.exports = { createLogin, login, readAllLogin, updateLogin }

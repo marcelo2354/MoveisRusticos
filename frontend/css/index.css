@@ -195,7 +195,7 @@ flex-wrap: wrap;
 }
 
 .card {
-border: 1px solid white;
+border: 1px solid rgb(0, 0, 0);
 cursor: pointer;
 padding: 10px;
 margin: 15px;
@@ -233,13 +233,12 @@ width: 40px;
   margin-left: 55px;
   margin-right: 55px;
   gap: 5px;
-  color: #ffff;
 }
 
 .card-2 {
   flex: 0 0 auto;
   width: 25%;
-  border: 2px solid white;
+  border: 2px solid rgb(0, 0, 0);
   margin-left: 5%;
   scroll-snap-align: start;
 }
@@ -273,17 +272,7 @@ width: 40px;
 
 }
 /*//////////////////////////////////////////////////*/
-#tela-galery{
-  text-align: center;
-  padding-top: 100px;
-  color: #ffff;
-}
 
-.galery{
-  display: flex;
-  flex-wrap: wrap;
-  text-align: left;
-}
 /*//////////////////////////////////////////////////*/
 
 #section-shop{
